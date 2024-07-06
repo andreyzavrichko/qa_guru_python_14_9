@@ -1,8 +1,4 @@
-import os
-
-from selene import browser, have
-
-from models.user import User
+from test_data.user import User
 from pages.form_page import RegistrationForm
 
 

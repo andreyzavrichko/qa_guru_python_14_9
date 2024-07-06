@@ -1,8 +1,8 @@
-import os
+from pathlib import Path
 
 from selene import browser, have
 
-from models.user import User
+from test_data.user import User
 
 
 class RegistrationForm:
@@ -27,7 +27,7 @@ class RegistrationForm:
         browser.element('.react-datepicker__day--015').click()
 
     def click_gender(self):
-        browser.element('.custom-control-label').click()
+        browser.element('[value=Male]+label').click()
 
     def type_phone(self, phone):
         browser.element('#userNumber').type(phone)
@@ -38,8 +38,11 @@ class RegistrationForm:
     def click_hobbies(self):
         browser.element('[for=hobbies-checkbox-1]').click()
 
+    # def upload_photo(self, photo):
+    #     browser.element('#uploadPicture').send_keys(os.path.abspath(photo))
+
     def upload_photo(self, photo):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(photo))
+        browser.element('#uploadPicture').send_keys(str(Path(__file__).parent.parent.joinpath(f'resources/{photo}')))
 
     def type_address(self, address):
         browser.element('#currentAddress').type(address)
