@@ -10,7 +10,7 @@ def test_complete_todo():
     registration_form.click_gender()
     registration_form.type_phone('5648798798')
     registration_form.type_birthday()
-    registration_form.type_subjects('co')
+    registration_form.type_subjects('Computer Science')
     registration_form.click_hobbies()
     registration_form.upload_photo('img.png')
     registration_form.type_address('Moscow, Manoilov Street, 64')
