@@ -37,7 +37,7 @@ class RegistrationForm:
         browser.element('[for=hobbies-checkbox-1]').click()
 
     def upload_photo(self, photo):
-        browser.element('#uploadPicture').send_keys(str(Path(__file__).parent.parent.joinpath(f'resources/{photo}')))
+        browser.element('#uploadPicture').send_keys(str(Path(__file__).parent.parent.parent.joinpath(f'resources/{photo}')))
 
     def type_address(self, address):
         browser.element('#currentAddress').type(address)

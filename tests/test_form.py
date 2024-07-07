@@ -1,39 +1,29 @@
-import os
-
-from selene import browser, have
-
 from models.application import app
 
 
 def test_complete_todo():
     app.left_panel.open()
-    browser.element('#firstName').type('Alex')
-    browser.element('#lastName').type('Smirnov')
-    browser.element('#userEmail').type('alex.smirnov@gmail.com')
-    browser.element('.custom-control-label').click()
-    browser.element('#userNumber').type('5648798798')
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__month-select').click()
-    browser.element('.react-datepicker__month-select').element(
-        '[value="4"]').click()
-    browser.element('.react-datepicker__year-select').click()
-    browser.element('.react-datepicker__year-select').element('[value="2014"]').click()
-    browser.element('.react-datepicker__day--015').click()
-    browser.element('#subjectsInput').type('co').press_enter()
-    browser.element('[for=hobbies-checkbox-1]').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('../resources/img.png'))
-    browser.element("#currentAddress").type("Moscow, Manoilov Street, 64")
-    browser.element("#react-select-3-input").type("NCR").press_enter()
-    browser.element("#react-select-4-input").type("Gurgaon").press_enter()
-    browser.element('#submit').click()
-    browser.element("#example-modal-sizes-title-lg").should(have.text('Thanks for submitting the form'))
-    browser.element('.table').all('td').even.should(have.exact_texts('Alex Smirnov',
-                                                                     'alex.smirnov@gmail.com',
-                                                                     'Male',
-                                                                     '5648798798',
-                                                                     '15 May,2014',
-                                                                     'Computer Science',
-                                                                     'Sports',
-                                                                     'img.png',
-                                                                     'Moscow, Manoilov Street, 64',
-                                                                     'NCR Gurgaon'))
+    app.left_panel.type_first_name('Alex')
+    app.left_panel.type_last_name('Smirnov')
+    app.left_panel.type_email('alex.smirnov@gmail.com')
+    app.left_panel.click_gender()
+    app.left_panel.type_phone('5648798798')
+    app.left_panel.type_birthday()
+    app.left_panel.type_subjects('Computer Science')
+    app.left_panel.click_hobbies()
+    app.left_panel.upload_photo('img.png')
+    app.left_panel.type_address('Moscow, Manoilov Street, 64')
+    app.left_panel.type_state('NCR')
+    app.left_panel.type_city('Gurgaon')
+    app.left_panel.press_submit()
+    app.left_panel.should_text('Thanks for submitting the form')
+    app.left_panel.should_exact_text('Alex Smirnov',
+                                     'alex.smirnov@gmail.com',
+                                     'Male',
+                                     '5648798798',
+                                     '15 May,2014',
+                                     'Computer Science',
+                                     'Sports',
+                                     'img.png',
+                                     'Moscow, Manoilov Street, 64',
+                                     'NCR Gurgaon')
