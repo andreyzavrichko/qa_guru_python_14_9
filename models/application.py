@@ -1,5 +1,5 @@
-from pages.form_page import RegistrationForm
-from pages.text_box_page import TextBoxForm
+from models.pages.form_page import RegistrationForm
+from models.pages.text_box_page import TextBoxForm
 
 
 class AppManager:

@@ -1,6 +1,6 @@
 from selene import browser, have
 
-from models.user import UserTextBox
+from test_data.user import UserTextBox
 
 
 class TextBoxForm:

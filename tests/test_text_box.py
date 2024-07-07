@@ -1,4 +1,4 @@
-from models import user
+from test_data import user
 from models.application import app
 
 

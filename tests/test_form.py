@@ -2,9 +2,11 @@ import os
 
 from selene import browser, have
 
+from models.application import app
+
 
 def test_complete_todo():
-    browser.open('automation-practice-form/')
+    app.left_panel.open()
     browser.element('#firstName').type('Alex')
     browser.element('#lastName').type('Smirnov')
     browser.element('#userEmail').type('alex.smirnov@gmail.com')
@@ -19,7 +21,7 @@ def test_complete_todo():
     browser.element('.react-datepicker__day--015').click()
     browser.element('#subjectsInput').type('co').press_enter()
     browser.element('[for=hobbies-checkbox-1]').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('img.png'))
+    browser.element('#uploadPicture').send_keys(os.path.abspath('../resources/img.png'))
     browser.element("#currentAddress").type("Moscow, Manoilov Street, 64")
     browser.element("#react-select-3-input").type("NCR").press_enter()
     browser.element("#react-select-4-input").type("Gurgaon").press_enter()
@@ -35,4 +37,3 @@ def test_complete_todo():
                                                                      'img.png',
                                                                      'Moscow, Manoilov Street, 64',
                                                                      'NCR Gurgaon'))
-
